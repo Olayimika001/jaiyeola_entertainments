@@ -1,0 +1,105 @@
+{
+  "assets": [
+    {
+      "id": "hero-bg-video",
+      "type": "video",
+      "filename": "hero-bg.mp4",
+      "status": "generated",
+      "description": "Cinematic film production set footage, 10s loop, dark warm lighting"
+    },
+    {
+      "id": "academy-preview",
+      "type": "image",
+      "filename": "academy-preview.jpg",
+      "status": "generated",
+      "dimensions": "800x1000",
+      "description": "Training studio with students learning filmmaking, warm lighting"
+    },
+    {
+      "id": "about-story",
+      "type": "image",
+      "filename": "about-story.jpg",
+      "status": "generated",
+      "dimensions": "600x800",
+      "description": "Behind-the-scenes film production, warm cinematic tones"
+    },
+    {
+      "id": "founder-emmanuel",
+      "type": "image",
+      "filename": "founder-emmanuel.jpg",
+      "status": "generated",
+      "dimensions": "500x650",
+      "description": "Professional studio portrait of African male executive in navy suit"
+    },
+    {
+      "id": "founder-ngozi",
+      "type": "image",
+      "filename": "founder-ngozi.jpg",
+      "status": "generated",
+      "dimensions": "500x650",
+      "description": "Professional studio portrait of African female executive in cream blazer"
+    },
+    {
+      "id": "service-movie",
+      "type": "image",
+      "filename": "service-movie.jpg",
+      "status": "generated",
+      "dimensions": "800x500",
+      "description": "Film set with director reviewing scene on monitor"
+    },
+    {
+      "id": "service-media",
+      "type": "image",
+      "filename": "service-media.jpg",
+      "status": "generated",
+      "dimensions": "800x500",
+      "description": "Modern video production studio with multiple screens"
+    },
+    {
+      "id": "service-talent",
+      "type": "image",
+      "filename": "service-talent.jpg",
+      "status": "generated",
+      "dimensions": "800x500",
+      "description": "Young performer on stage under dramatic spotlight"
+    },
+    {
+      "id": "service-events",
+      "type": "image",
+      "filename": "service-events.jpg",
+      "status": "generated",
+      "dimensions": "800x500",
+      "description": "Grand event space lit for evening gala"
+    },
+    {
+      "id": "service-promotions",
+      "type": "image",
+      "filename": "service-promotions.jpg",
+      "status": "generated",
+      "dimensions": "800x500",
+      "description": "Creative marketing team brainstorming around table"
+    },
+    {
+      "id": "service-multimedia",
+      "type": "image",
+      "filename": "service-multimedia.jpg",
+      "status": "generated",
+      "dimensions": "800x500",
+      "description": "Motion graphics designer at multi-monitor workstation"
+    },
+    {
+      "id": "favicon",
+      "type": "svg",
+      "filename": "favicon.svg",
+      "status": "created",
+      "description": "G lettermark logo in gold"
+    },
+    {
+      "id": "grain-texture",
+      "type": "svg",
+      "filename": "inline",
+      "status": "inline",
+      "description": "200x200 SVG noise pattern inlined in CSS as data URI"
+    }
+  ]
+}
