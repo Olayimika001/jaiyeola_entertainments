@@ -12,17 +12,6 @@ const curriculum = [
   { Icon: CourseIcon.MediaProduction, name: 'The Business of Acting', desc: 'Understand how the industry works, including branding yourself, working with directors, and managing contracts.' },
 ]
 
-const faqs = [
-  { q: 'Who can apply to the Jaiyeola Acting Academy?', a: 'Our academy welcomes passionate individuals at all levels — whether you are a complete beginner or looking to sharpen your skills. Applicants under 18 require parental or guardian consent.' },
-  { q: 'What is the 3-Month Stage Performance Course?', a: 'Our flagship training program runs over three months: Month 1 covers stage performance foundations and acting basics; Month 2 focuses on voice, speech, and script performance; Month 3 culminates in rehearsal, stage production, and a live performance before an audience.' },
-  { q: 'What happens after I submit the registration form?', a: 'Submission registers your intent to join the academy and schedules your preliminary audition. It does not guarantee automatic admission into advanced production tracks. Our casting directors will review your application and contact you with next steps.' },
-  { q: 'Do I need prior acting experience?', a: 'No prior experience is required. We accept complete beginners as well as those with amateur, professional theatre, or screen experience. Select your experience level in the registration form.' },
-  { q: 'What training tracks are available?', a: 'We offer Full-Time Cohort (Weekday Mornings), Part-Time/Executive Cohort (Weekend Intensive), and Evening Masterclasses. Select your preferred track when registering.' },
-  { q: 'Will I get on-set experience?', a: 'Yes. Our best-performing students get direct opportunities to audition for and star in upcoming Jaiyeola Movie Entertainment feature films and projects.' },
-  { q: 'Do graduates receive a showreel?', a: 'Graduates receive a high-quality video showreel of their performances to present to future casting directors and industry professionals.' },
-  { q: 'What media should I upload with my application?', a: 'Please provide a clear profile headshot, a full-length standing portrait, and optionally a 1-to-2 minute monologue video link (YouTube, Vimeo, or Google Drive). Ensure your voice is loud, clear, and the camera is steady.' },
-]
-
 function triggerConfetti(container: HTMLElement) {
   for (let i = 0; i < 8; i++) {
     const dot = document.createElement('div')
@@ -37,7 +26,6 @@ function triggerConfetti(container: HTMLElement) {
 }
 
 export default function Academy() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const formRef = useRef<HTMLFormElement>(null)
   const successRef = useRef<HTMLDivElement>(null)
