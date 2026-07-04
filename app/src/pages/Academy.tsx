@@ -12,6 +12,29 @@ const curriculum = [
   { Icon: CourseIcon.MediaProduction, name: 'The Business of Acting', desc: 'Understand how the industry works, including branding yourself, working with directors, and managing contracts.' },
 ]
 
+const technicalTracks = [
+  {
+    Icon: CourseIcon.Filmmaking,
+    name: 'Directing & Story Interpretation',
+    desc: 'Learn script breakdown, scene blocking, working with actors, and how to shape a story from rehearsal to final take.',
+  },
+  {
+    Icon: CourseIcon.MediaProduction,
+    name: 'Camera Handling & Shot Composition',
+    desc: 'Build confidence with camera setup, framing, movement, continuity, and the technical discipline needed on set.',
+  },
+  {
+    Icon: CourseIcon.ContentCreation,
+    name: 'Audio & Set Communication',
+    desc: 'Understand sound capture, boom and audio support roles, set coordination, and clean communication during production.',
+  },
+  {
+    Icon: CourseIcon.Editing,
+    name: 'Lighting & Technical Support',
+    desc: 'Explore lighting setup, mood creation, basic power and rig awareness, and the teamwork required behind the scenes.',
+  },
+]
+
 function triggerConfetti(container: HTMLElement) {
   for (let i = 0; i < 8; i++) {
     const dot = document.createElement('div')
@@ -159,11 +182,43 @@ export default function Academy() {
 
       {/* ─── REGISTRATION FORM ─── */}
       <section id="register" className="bg-[#FAFAF9]" style={{ padding: 'clamp(80px, 12vh, 140px) 0' }}>
+        <div className="content-max px-4 sm:px-6">
+          <div className="reveal mb-16">
+            <div className="glass-card-light w-full" style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
+              <div className="text-center mb-10">
+                <p className="section-label justify-center">DIRECTING & TECHNICAL TRAINING</p>
+                <h2 className="font-h1 text-[#09090A] mb-4">Want to Become a Director or Technical Crew Member?</h2>
+                <p className="font-body text-[rgba(9,9,10,0.7)] max-w-[760px] mx-auto">
+                  The academy also welcomes creatives who want to work behind the camera. If your passion is directing or the technical side of production, we offer practical exposure to the key roles that keep a professional set running smoothly.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
+                {technicalTracks.map((track, i) => (
+                  <div
+                    key={track.name}
+                    className={`rounded-2xl border border-[rgba(9,9,10,0.08)] bg-white min-h-[220px] reveal reveal-delay-${Math.min(i, 5)}`}
+                    style={{ padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}
+                  >
+                    <div className="mb-4"><track.Icon /></div>
+                    <h3 className="font-h3 text-[#09090A] mb-3">{track.name}</h3>
+                    <p className="font-body text-[rgba(9,9,10,0.7)]">{track.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="font-small text-[rgba(9,9,10,0.6)] text-center mt-8">
+                Interested in audio work, camera handling, lighting, directing, or other technical set roles? Complete the form below and tell us the path you want to pursue.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-[800px] mx-auto px-6">
           <div className="reveal text-center">
             <h2 className="font-h1 text-[#09090A] mb-4">Student Registration & Audition Form</h2>
             <p className="font-body text-[rgba(9,9,10,0.7)] max-w-[640px] mx-auto mb-12">
-              Thank you for your interest in joining the Jaiyeola Acting Academy in conjunction with Fala Films Multimedia. Our mission is to nurture raw passion into professional screen excellence. Please fill out this form accurately to register for the upcoming cohort and secure your audition slot.
+              Thank you for your interest in joining the Jaiyeola Acting Academy in conjunction with Fala Films Multimedia. Our mission is to nurture raw passion into professional screen excellence, both on camera and behind the scenes. Please fill out this form accurately to register for the upcoming cohort and secure your audition or interview slot.
             </p>
           </div>
 
@@ -277,6 +332,20 @@ export default function Academy() {
               {/* Section 4 */}
               <div className="mb-8">
                 <h3 className="font-h3 text-[#09090A] mb-2">Section 4: Experience & Background</h3>
+                <p className="font-small text-[#09090A] font-medium mb-3">Which training path are you applying for? *</p>
+                <div className="space-y-2 mb-6">
+                  {[
+                    { value: 'acting', label: 'Acting / Performance' },
+                    { value: 'directing', label: 'Directing / Story Development' },
+                    { value: 'technical', label: 'Technical Production (Audio, Camera, Lighting, Set Support)' },
+                    { value: 'undecided', label: 'I am not sure yet and need guidance' },
+                  ].map((track) => (
+                    <label key={track.value} className="flex items-center gap-2 font-body text-[rgba(9,9,10,0.7)] cursor-pointer">
+                      <input type="radio" name="trainingPath" value={track.value} required className="accent-[#D4A853]" />
+                      {track.label}
+                    </label>
+                  ))}
+                </div>
                 <p className="font-small text-[#09090A] font-medium mb-3">Do you have any previous acting experience? *</p>
                 <div className="space-y-2 mb-6">
                   {[

@@ -73,7 +73,10 @@ export default function Footer() {
           <div>
             <p className="font-micro text-[#D4A853] mb-4">GET IN TOUCH</p>
             <p className="font-small text-[#C8C8C8] mb-1">
-              <a href="tel:+2348026245050" className="hover:text-white transition-colors">+234-8026245050</a>
+              <a href="tel:+2348026245050" className="hover:text-white transition-colors">+4915211908325</a>
+            </p>
+            <p className="font-small text-[#C8C8C8] mb-1">
+              <a href="tel:+2348026245050" className="hover:text-white transition-colors">+4915140930539</a>
             </p>
             <p className="font-small text-[#C8C8C8] mb-1">
               <a href="mailto:monsuruobadinafala@gmail.com" className="hover:text-white transition-colors">monsuruobadinafala@gmail.com</a>

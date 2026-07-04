@@ -200,7 +200,8 @@ export default function About() {
               </ProfileBlock>
 
               <ProfileBlock title="Contact">
-                <p>+234-8026245050</p>
+                <p>+234-8026245055</p>
+                <p>+234-8111304335</p>
                 <p>E-mail: monsuruobadinafala@gmail.com</p>
               </ProfileBlock>
             </div>

@@ -17,9 +17,9 @@ function triggerConfetti(container: HTMLElement) {
 }
 
 const contactCards = [
-  { Icon: UIIcon.Phone, label: 'PHONE', primary: '+234-8026245050', secondary: 'Call or WhatsApp' },
+  { Icon: UIIcon.Phone, label: 'PHONE', primary: '+4915211908325', secondary: 'Call or WhatsApp', tertiary: ' +4915140930539' },
   { Icon: UIIcon.Email, label: 'EMAIL', primary: 'monsuruobadinafala@gmail.com', secondary: 'General inquiries & academy' },
-  { Icon: UIIcon.MapPin, label: 'VISIT US', primary: '312 Lagos-Abeokuta Expressway, Ile-Epo Bus-Stop', secondary: 'Lagos Nigeria' },
+  { Icon: UIIcon.MapPin, label: 'VISIT US', primary: 'C/o Tawakalitu Stephen Rudorffstr.42 Munchen Germany', secondary: '' },
   { Icon: UIIcon.Clock, label: 'YOUTUBE', primary: 'MONUMENTAL TV', secondary: 'Fala Films Multimedia Channel' },
 ]
 
@@ -66,6 +66,7 @@ export default function Contact() {
                 <div className="flex justify-center mb-4"><card.Icon /></div>
                 <p className="font-micro text-[#D4A853] mb-2">{card.label}</p>
                 <p className="font-body text-white mb-1">{card.primary}</p>
+                 <p className="font-body text-white mb-1">{card.tertiary}</p>
                 <p className="font-small text-[#C8C8C8]">{card.secondary}</p>
               </div>
             ))}
