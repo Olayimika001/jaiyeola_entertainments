@@ -2,38 +2,9 @@ import { useRef, useState } from 'react'
 import { CourseIcon } from '../components/Icons'
 import PageHero from '../components/PageHero'
 import { submitToEmail } from '../lib/submitForm'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const CURRICULUM_DOC = './documents/3-Month-Stage-Performance-Course-Outline.html'
-
-const curriculum = [
-  { Icon: CourseIcon.Acting, name: 'Screen Acting Techniques', desc: 'Learn how to translate emotions naturally from the script to the camera.' },
-  { Icon: CourseIcon.Filmmaking, name: 'Character Development', desc: 'Master the psychology of a character, understanding their motivations, voice, and physical traits.' },
-  { Icon: CourseIcon.Editing, name: 'Audition Mastery', desc: 'Get insider secrets on how to walk into an audition room with confidence, nail cold readings, and land the role.' },
-  { Icon: CourseIcon.MediaProduction, name: 'The Business of Acting', desc: 'Understand how the industry works, including branding yourself, working with directors, and managing contracts.' },
-]
-
-const technicalTracks = [
-  {
-    Icon: CourseIcon.Filmmaking,
-    name: 'Directing & Story Interpretation',
-    desc: 'Learn script breakdown, scene blocking, working with actors, and how to shape a story from rehearsal to final take.',
-  },
-  {
-    Icon: CourseIcon.MediaProduction,
-    name: 'Camera Handling & Shot Composition',
-    desc: 'Build confidence with camera setup, framing, movement, continuity, and the technical discipline needed on set.',
-  },
-  {
-    Icon: CourseIcon.ContentCreation,
-    name: 'Audio & Set Communication',
-    desc: 'Understand sound capture, boom and audio support roles, set coordination, and clean communication during production.',
-  },
-  {
-    Icon: CourseIcon.Editing,
-    name: 'Lighting & Technical Support',
-    desc: 'Explore lighting setup, mood creation, basic power and rig awareness, and the teamwork required behind the scenes.',
-  },
-]
 
 function triggerConfetti(container: HTMLElement) {
   for (let i = 0; i < 8; i++) {
@@ -52,6 +23,7 @@ export default function Academy() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const formRef = useRef<HTMLFormElement>(null)
   const successRef = useRef<HTMLDivElement>(null)
+  const { t } = useLanguage()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -68,12 +40,42 @@ export default function Academy() {
     }
   }
 
+  const curriculum = [
+    { Icon: CourseIcon.Acting, name: t.home.academyPreview.whatWeTeach[0]?.title || 'Screen Acting Techniques', desc: t.home.academyPreview.whatWeTeach[0]?.desc || 'Learn how to translate emotions naturally from the script to the camera.' },
+    { Icon: CourseIcon.Filmmaking, name: t.home.academyPreview.whatWeTeach[1]?.title || 'Character Development', desc: t.home.academyPreview.whatWeTeach[1]?.desc || 'Master the psychology of a character, understanding their motivations, voice, and physical traits.' },
+    { Icon: CourseIcon.Editing, name: t.home.academyPreview.whatWeTeach[2]?.title || 'Audition Mastery', desc: t.home.academyPreview.whatWeTeach[2]?.desc || 'Get insider secrets on how to walk into an audition room with confidence, nail cold readings, and land the role.' },
+    { Icon: CourseIcon.MediaProduction, name: t.home.academyPreview.whatWeTeach[3]?.title || 'The Business of Acting', desc: t.home.academyPreview.whatWeTeach[3]?.desc || 'Understand how the industry works, including branding yourself, working with directors, and managing contracts.' },
+  ]
+
+  const technicalTracks = [
+    {
+      Icon: CourseIcon.Filmmaking,
+      name: t.academy.technicalTraining.whatWeTeach[0]?.title || 'Directing & Story Interpretation',
+      desc: t.academy.technicalTraining.whatWeTeach[0]?.desc || 'Learn script breakdown, scene blocking, working with actors, and how to shape a story from rehearsal to final take.',
+    },
+    {
+      Icon: CourseIcon.MediaProduction,
+      name: t.academy.technicalTraining.whatWeTeach[1]?.title || 'Camera Handling & Shot Composition',
+      desc: t.academy.technicalTraining.whatWeTeach[1]?.desc || 'Build confidence with camera setup, framing, movement, continuity, and the technical discipline needed on set.',
+    },
+    {
+      Icon: CourseIcon.ContentCreation,
+      name: t.academy.technicalTraining.whatWeTeach[2]?.title || 'Audio & Set Communication',
+      desc: t.academy.technicalTraining.whatWeTeach[2]?.desc || 'Understand sound capture, boom and audio support roles, set coordination, and clean communication during production.',
+    },
+    {
+      Icon: CourseIcon.Editing,
+      name: t.academy.technicalTraining.whatWeTeach[3]?.title || 'Lighting & Technical Support',
+      desc: t.academy.technicalTraining.whatWeTeach[3]?.desc || 'Explore lighting setup, mood creation, basic power and rig awareness, and the teamwork required behind the scenes.',
+    },
+  ]
+
   return (
     <div>
       <PageHero
-        label="JAIYEOLA ACTING ACADEMY IN CONJUNCTION WITH FALA FILMS MULTIMEDIA"
-        title="Become an Artist"
-        subtitle="Have you always dreamed of seeing yourself on the big screen? Your journey starts here."
+        label={t.academy.pageHero.label}
+        title={t.academy.pageHero.title}
+        subtitle={t.academy.pageHero.subtitle}
         backgroundImage="./assets/academy-preview.jpg"
         height="55vh"
         align="end"
@@ -83,25 +85,19 @@ export default function Academy() {
       <section className="section-padding content-max">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="reveal">
-            <p className="section-label">ARTIST TRAINING &amp; ACADEMY</p>
+            <p className="section-label">{t.academy.intro.sectionLabel}</p>
             <p className="font-body text-[#C8C8C8] mb-6">
-              At Jaiyeola Productions, we don&apos;t just look for stars—we build them. Our Artist Development &amp; Acting Academy is designed for passionate individuals who want to master the craft of acting, voice acting, and screen presence. Whether you are a complete beginner or looking to sharpen your skills, our hands-on curriculum bridges the gap between raw talent and professional excellence.
+              {t.academy.intro.description}
             </p>
 
-            <h3 className="font-h3 text-[#D4A853] mb-4">Why Train With Us?</h3>
+            <h3 className="font-h3 text-[#D4A853] mb-4">{t.academy.intro.whyTrainTitle}</h3>
             <div className="space-y-4">
-              <div>
-                <p className="font-body text-white font-medium">Industry-Active Mentors</p>
-                <p className="font-body text-[#C8C8C8]">Learn directly from working directors, seasoned actors, and producers who know exactly what the industry is looking for.</p>
-              </div>
-              <div>
-                <p className="font-body text-white font-medium">On-Set Experience</p>
-                <p className="font-body text-[#C8C8C8]">Our best-performing students get direct opportunities to audition for and star in upcoming Jaiyeola Movie Entertainment feature films and projects.</p>
-              </div>
-              <div>
-                <p className="font-body text-white font-medium">Professional Showreel</p>
-                <p className="font-body text-[#C8C8C8]">Graduate with a high-quality video showreel of your performances to show future casting directors.</p>
-              </div>
+              {t.academy.intro.benefits.map((benefit, i) => (
+                <div key={i}>
+                  <p className="font-body text-white font-medium">{benefit.title}</p>
+                  <p className="font-body text-[#C8C8C8]">{benefit.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
           <div className="reveal reveal-delay-2">
@@ -119,8 +115,8 @@ export default function Academy() {
       <section className="section-padding bg-[#09090A]">
         <div className="content-max">
           <div className="reveal">
-            <p className="section-label">WHAT WE TEACH</p>
-            <h2 className="font-h1 text-white mb-16">What We Teach</h2>
+            <p className="section-label">{t.academy.curriculum.sectionLabel}</p>
+            <h2 className="font-h1 text-white mb-16">{t.academy.curriculum.title}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -135,21 +131,48 @@ export default function Academy() {
         </div>
       </section>
 
+      {/* ─── YORUBA LANGUAGE LEARNING ─── */}
+      <section className="section-padding" style={{ background: 'linear-gradient(to bottom, rgba(212,168,83,0.05), #09090A)' }}>
+        <div className="content-max">
+          <div className="reveal text-center mb-12">
+            <p className="section-label justify-center">{t.academy.yorubaLearning.sectionLabel}</p>
+            <h2 className="font-h1 text-white mb-4">{t.academy.yorubaLearning.title}</h2>
+            <p className="font-body text-[#C8C8C8] max-w-[640px] mx-auto">
+              {t.academy.yorubaLearning.description}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {t.academy.yorubaLearning.whatYouLearn.map((item, i) => (
+              <div key={item.title} className={`glass-card reveal reveal-delay-${i}`}>
+                <div className="mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[rgba(212,168,83,0.1)] flex items-center justify-center">
+                    <CourseIcon.Acting />
+                  </div>
+                </div>
+                <h3 className="font-h3 text-white mb-3">{item.title}</h3>
+                <p className="font-body text-[#C8C8C8]">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── 3-MONTH COURSE — DOWNLOAD ─── */}
       <section id="curriculum" className="section-padding bg-[#FAFAF9]">
         <div className="content-max">
           <div className="reveal text-center mb-12">
-            <p className="section-label justify-center">COURSE OUTLINE</p>
-            <h2 className="font-h1 text-[#09090A] mb-4">3-Month Stage Performance Course</h2>
+            <p className="section-label justify-center">{t.academy.courseOutline.sectionLabel}</p>
+            <h2 className="font-h1 text-[#09090A] mb-4">{t.academy.courseOutline.title}</h2>
             <p className="font-body text-[rgba(9,9,10,0.7)] max-w-[640px] mx-auto">
-              Download the full course outline covering Month 1 (Foundations), Month 2 (Voice, Speech &amp; Script Performance), and Month 3 (Rehearsal, Stage Production &amp; Live Performance), including end goals and the final practical project.
+              {t.academy.courseOutline.description}
             </p>
           </div>
 
           <div className="reveal glass-card-light max-w-[640px] mx-auto text-center" style={{ padding: '3rem' }}>
-            <p className="font-h3 text-[#09090A] mb-4">3-Month Stage Performance Course Outline</p>
+            <p className="font-h3 text-[#09090A] mb-4">{t.academy.courseOutline.cardTitle}</p>
             <p className="font-body text-[rgba(9,9,10,0.7)] mb-8">
-              Jaiyeola Acting Academy in conjunction with Fala Films Multimedia
+              {t.academy.courseOutline.cardSubtitle}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
@@ -158,7 +181,7 @@ export default function Academy() {
                 className="btn-primary"
                 style={{ background: '#D4A853', color: '#09090A' }}
               >
-                Download Course Outline
+                {t.academy.courseOutline.downloadBtn}
               </a>
               <a
                 href={CURRICULUM_DOC}
@@ -167,14 +190,14 @@ export default function Academy() {
                 className="btn-ghost"
                 style={{ borderColor: 'rgba(9,9,10,0.2)', color: '#09090A' }}
               >
-                View in Browser
+                {t.academy.courseOutline.viewBtn}
               </a>
             </div>
             <p className="font-micro text-[rgba(9,9,10,0.5)] mt-6">
-              Open the document and use Print → Save as PDF to keep a PDF copy.
+              {t.academy.courseOutline.note}
             </p>
             <a href="#register" className="inline-block mt-8 font-small text-[#D4A853] hover:underline">
-              Ready to apply? Register below →
+              {t.academy.courseOutline.applyLink}
             </a>
           </div>
         </div>
@@ -186,10 +209,10 @@ export default function Academy() {
           <div className="reveal mb-16">
             <div className="glass-card-light w-full" style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
               <div className="text-center mb-10">
-                <p className="section-label justify-center">DIRECTING & TECHNICAL TRAINING</p>
-                <h2 className="font-h1 text-[#09090A] mb-4">Want to Become a Director or Technical Crew Member?</h2>
+                <p className="section-label justify-center">{t.academy.technicalTraining.sectionLabel}</p>
+                <h2 className="font-h1 text-[#09090A] mb-4">{t.academy.technicalTraining.title}</h2>
                 <p className="font-body text-[rgba(9,9,10,0.7)] max-w-[760px] mx-auto">
-                  The academy also welcomes creatives who want to work behind the camera. If your passion is directing or the technical side of production, we offer practical exposure to the key roles that keep a professional set running smoothly.
+                  {t.academy.technicalTraining.description}
                 </p>
               </div>
 
@@ -208,7 +231,7 @@ export default function Academy() {
               </div>
 
               <p className="font-small text-[rgba(9,9,10,0.6)] text-center mt-8">
-                Interested in audio work, camera handling, lighting, directing, or other technical set roles? Complete the form below and tell us the path you want to pursue.
+                {t.academy.technicalTraining.note}
               </p>
             </div>
           </div>
@@ -216,9 +239,9 @@ export default function Academy() {
 
         <div className="max-w-[800px] mx-auto px-6">
           <div className="reveal text-center">
-            <h2 className="font-h1 text-[#09090A] mb-4">Student Registration & Audition Form</h2>
+            <h2 className="font-h1 text-[#09090A] mb-4">{t.academy.registrationForm.title}</h2>
             <p className="font-body text-[rgba(9,9,10,0.7)] max-w-[640px] mx-auto mb-12">
-              Thank you for your interest in joining the Jaiyeola Acting Academy in conjunction with Fala Films Multimedia. Our mission is to nurture raw passion into professional screen excellence, both on camera and behind the scenes. Please fill out this form accurately to register for the upcoming cohort and secure your audition or interview slot.
+              {t.academy.registrationForm.description}
             </p>
           </div>
 
@@ -226,7 +249,7 @@ export default function Academy() {
             <div ref={successRef} className="relative">
               <div className="form-success">
                 <div className="success-icon">&#10003;</div>
-                <p>Thank you! We have received your registration and will contact you regarding your audition slot.</p>
+                <p>{t.academy.registrationForm.successMessage}</p>
               </div>
             </div>
           ) : (
@@ -235,7 +258,7 @@ export default function Academy() {
               <input type="hidden" name="formType" value="academy-registration" />
               {/* Section 1 */}
               <div className="mb-8">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 1: Personal Information</h3>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section1}</h3>
                 <div className="grid md:grid-cols-2 gap-6 mt-6">
                   <div>
                     <label className="block font-small text-[#09090A] font-medium mb-1.5">First Name *</label>
@@ -278,7 +301,7 @@ export default function Academy() {
 
               {/* Section 2 */}
               <div className="mb-8">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 2: Emergency / Guardian Contact</h3>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section2}</h3>
                 <p className="font-small text-[rgba(9,9,10,0.5)] mb-6">Mandatory for applicants under 18 years of age</p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -305,7 +328,7 @@ export default function Academy() {
 
               {/* Section 3 */}
               <div className="mb-8">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 3: Profile & Physical Characteristics</h3>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section3}</h3>
                 <p className="font-small text-[rgba(9,9,10,0.5)] mb-6">Required for casting and character placement during on-camera training</p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -331,7 +354,7 @@ export default function Academy() {
 
               {/* Section 4 */}
               <div className="mb-8">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 4: Experience & Background</h3>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section4}</h3>
                 <p className="font-small text-[#09090A] font-medium mb-3">Which training path are you applying for? *</p>
                 <div className="space-y-2 mb-6">
                   {[
@@ -397,7 +420,7 @@ export default function Academy() {
 
               {/* Section 5 */}
               <div className="mb-8">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 5: Audition & Media Uploads</h3>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section5}</h3>
                 <p className="font-small text-[rgba(9,9,10,0.5)] mb-6">
                   To help our casting directors review your application, please provide the following files and links.
                 </p>
@@ -415,7 +438,7 @@ export default function Academy() {
                   <div>
                     <label className="block font-small text-[#09090A] font-medium mb-1.5">Monologue Video Link (Optional but highly recommended)</label>
                     <input type="url" name="monologueUrl" placeholder="YouTube / Vimeo / Google Drive URL" className="form-input-light" />
-                    <p className="font-micro text-[rgba(9,9,10,0.5)] mt-1">Record a 1-to-2 minute dramatic or comic monologue. Ensure your voice is loud, clear, and the camera is steady.</p>
+                    <p className="font-micro text-[rgba(9,9,10,0.5)] mt-1">Record a 1-2 minute dramatic or comic monologue. Ensure your voice is loud, clear, and the camera is steady.</p>
                   </div>
                 </div>
               </div>
@@ -424,12 +447,12 @@ export default function Academy() {
 
               {/* Section 6 */}
               <div className="mb-8">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 6: Class Schedule Preference</h3>
-                <p className="font-small text-[#09090A] font-medium mb-3">Which training track fits your schedule best? *</p>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section6}</h3>
+                <p className="font-small text-[#09090A] font-medium mb-3">Which training path fits your schedule best? *</p>
                 <div className="space-y-2">
                   {[
                     { value: 'full-time', label: 'Full-Time Cohort (Weekday Mornings)' },
-                    { value: 'part-time', label: 'Part-Time/Executive Cohort (Weekend Intensive)' },
+                    { value: 'part-time', label: 'Part-Time/Executive Cohort (Weekend Intensives)' },
                     { value: 'evening', label: 'Evening Masterclasses' },
                   ].map((opt) => (
                     <label key={opt.value} className="flex items-center gap-2 font-body text-[rgba(9,9,10,0.7)] cursor-pointer">
@@ -444,7 +467,7 @@ export default function Academy() {
 
               {/* Section 7 */}
               <div className="mb-10">
-                <h3 className="font-h3 text-[#09090A] mb-2">Section 7: Terms, Conditions, and Consent</h3>
+                <h3 className="font-h3 text-[#09090A] mb-2">{t.academy.registrationForm.section7}</h3>
                 <p className="font-body text-[rgba(9,9,10,0.7)] mb-6">
                   Declaration: By submitting this form, I certify that all information provided is true and accurate to the best of my knowledge. I understand that submission of this form registers my intent to join the academy and schedules my preliminary audition, but does not guarantee automatic admission into the advanced production tracks.
                 </p>
@@ -466,60 +489,22 @@ export default function Academy() {
 
               <div className="flex flex-wrap justify-center gap-4">
                 <button type="submit" disabled={formState === 'submitting'} className="btn-primary" style={{ background: '#D4A853', color: '#09090A' }}>
-                  {formState === 'submitting' ? 'Submitting...' : 'Submit Registration & Audition'}
+                  {formState === 'submitting' ? t.academy.registrationForm.submittingText : t.academy.registrationForm.submitText}
                 </button>
                 <button type="reset" className="btn-ghost" style={{ borderColor: 'rgba(9,9,10,0.2)', color: '#09090A' }} onClick={() => setFormState('idle')}>
-                  Reset Form
+                  {t.academy.registrationForm.resetText}
                 </button>
               </div>
 
               {formState === 'error' && (
                 <p className="form-error mt-4">
-                  Something went wrong. Please try again or contact us at monsuruobadinafala@gmail.com
+                  {t.academy.registrationForm.errorMessage}
                 </p>
               )}
             </form>
           )}
         </div>
       </section>
-
-      {/* ─── FAQs ─── */}
-      {/* <section className="section-padding bg-[#09090A]">
-        <div className="max-w-[800px] mx-auto px-6">
-          <div className="reveal text-center">
-            <p className="section-label justify-center">FREQUENTLY ASKED QUESTIONS</p>
-            <h2 className="font-h1 text-white mb-12">Got Questions?</h2>
-          </div>
-
-          <div>
-            {faqs.map((faq, i) => (
-              <div
-                key={i}
-                className={`faq-item border-b border-[rgba(255,255,255,0.1)] reveal reveal-delay-${Math.min(i, 5)} ${openFaq === i ? 'is-open' : ''}`}
-              >
-                <button
-                  type="button"
-                  className="w-full flex items-center justify-between py-6 text-left group"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                >
-                  <span className={`font-body font-medium transition-colors duration-300 ${
-                    openFaq === i ? 'text-[#D4A853]' : 'text-white group-hover:text-[#D4A853]'
-                  }`}>
-                    {faq.q}
-                  </span>
-                  <span className={`faq-icon text-[#C8C8C8] text-xl flex-shrink-0 ml-4 ${openFaq === i ? 'is-open' : ''}`}>
-                    +
-                  </span>
-                </button>
-                <div className={`faq-answer ${openFaq === i ? 'is-open' : ''}`}>
-                  <p className="font-body text-[#C8C8C8] pb-6 max-w-[700px]">{faq.a}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
     </div>
   )
 }

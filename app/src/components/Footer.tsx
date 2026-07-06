@@ -1,29 +1,25 @@
 import { Link } from 'react-router-dom'
 import { SocialIcon } from './Icons'
-
-const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Academy', path: '/academy' },
-  { label: 'Contact', path: '/contact' },
-]
-
-const serviceLinks = [
-  'Film & Movie Production',
-  'Documentaries & Digital Content',
-  'Artist Development',
-  'Talent Discovery',
-  'Film Consultancy',
-]
-
-const socialLinks = [
-  { name: 'YouTube', Icon: SocialIcon.YouTube, href: 'https://www.youtube.com' },
-  { name: 'Instagram', Icon: SocialIcon.Instagram, href: '#' },
-  { name: 'Facebook', Icon: SocialIcon.Facebook, href: '#' },
-]
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLanguage()
+  
+  const navLinks = [
+    { label: t.nav.home, path: '/' },
+    { label: t.nav.about, path: '/about' },
+    { label: t.nav.services, path: '/services' },
+    { label: t.nav.academy, path: '/academy' },
+    { label: t.nav.studio, path: '/studio' },
+    { label: t.nav.contact, path: '/contact' },
+  ]
+
+  const socialLinks = [
+    { name: 'YouTube', Icon: SocialIcon.YouTube, href: 'https://www.youtube.com' },
+    { name: 'Instagram', Icon: SocialIcon.Instagram, href: '#' },
+    { name: 'Facebook', Icon: SocialIcon.Facebook, href: '#' },
+  ]
+
   return (
     <footer className="bg-[#09090A] border-t border-[rgba(255,255,255,0.1)]">
       <div className="content-max pt-20 pb-10">
@@ -37,13 +33,13 @@ export default function Footer() {
             />
             <p className="font-micro text-[#D4A853] mb-4">IN CONJUNCTION WITH FALA FILMS MULTIMEDIA</p>
             <p className="font-small text-[#C8C8C8] max-w-[280px]">
-              Bringing stories to life. Shaping the stars of tomorrow. Creating unforgettable moments.
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <p className="font-micro text-[#D4A853] mb-4">NAVIGATION</p>
+            <p className="font-micro text-[#D4A853] mb-4">{t.footer.navigation}</p>
             <ul className="space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.path}>
@@ -57,9 +53,9 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <p className="font-micro text-[#D4A853] mb-4">OUR SERVICES</p>
+            <p className="font-micro text-[#D4A853] mb-4">{t.footer.services}</p>
             <ul className="space-y-2.5">
-              {serviceLinks.map((service) => (
+              {t.footer.serviceList.map((service) => (
                 <li key={service}>
                   <Link to="/services" className="font-small text-[#C8C8C8] hover:text-white transition-colors duration-300">
                     {service}
@@ -71,7 +67,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="font-micro text-[#D4A853] mb-4">GET IN TOUCH</p>
+            <p className="font-micro text-[#D4A853] mb-4">{t.footer.getInTouch}</p>
             <p className="font-small text-[#C8C8C8] mb-1">
               <a href="tel:+2348026245050" className="hover:text-white transition-colors">+4915211908325</a>
             </p>
@@ -98,22 +94,22 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="font-micro text-[rgba(255,255,255,0.4)] mt-4">MONUMENTAL TV on YouTube</p>
+            <p className="font-micro text-[rgba(255,255,255,0.4)] mt-4">{t.footer.youtube}</p>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="border-t border-[rgba(255,255,255,0.1)] mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="font-micro text-[rgba(255,255,255,0.4)]">
-            &copy; 2026 Jaiyeola Movie Entertainment Productions & Fala Films Multimedia. All rights reserved.
+            {t.footer.copyright}
           </p>
           <div className="flex gap-4">
             <span className="font-micro text-[rgba(255,255,255,0.4)] hover:text-white transition-colors duration-300 cursor-pointer">
-              Privacy Policy
+              {t.footer.privacy}
             </span>
             <span className="font-micro text-[rgba(255,255,255,0.4)]">&middot;</span>
             <span className="font-micro text-[rgba(255,255,255,0.4)] hover:text-white transition-colors duration-300 cursor-pointer">
-              Terms of Service
+              {t.footer.terms}
             </span>
           </div>
         </div>

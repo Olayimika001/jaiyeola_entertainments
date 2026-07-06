@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-
-const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Academy', path: '/academy' },
-  { label: 'Contact', path: '/contact' },
-]
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const { t, language, setLanguage } = useLanguage()
+
+  const navLinks = [
+    { label: t.nav.home, path: '/' },
+    { label: t.nav.about, path: '/about' },
+    { label: t.nav.services, path: '/services' },
+    { label: t.nav.academy, path: '/academy' },
+    { label: t.nav.studio, path: '/studio' },
+    { label: t.nav.contact, path: '/contact' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100)
@@ -76,6 +79,29 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            {/* Language Switcher */}
+            <div className="flex items-center gap-2 border border-[rgba(255,255,255,0.3)] rounded-full px-2 py-1">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`font-nav text-xs px-3 py-1 rounded-full transition-colors ${
+                  language === 'en'
+                    ? 'bg-[#D4A853] text-[#09090A]'
+                    : 'text-white hover:text-[#D4A853]'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('yo')}
+                className={`font-nav text-xs px-3 py-1 rounded-full transition-colors ${
+                  language === 'yo'
+                    ? 'bg-[#D4A853] text-[#09090A]'
+                    : 'text-white hover:text-[#D4A853]'
+                }`}
+              >
+                YO
+              </button>
+            </div>
           </nav>
 
           {/* Hamburger */}
@@ -137,6 +163,37 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
+        {/* Mobile Language Switcher */}
+        <div
+          className="flex items-center gap-2 border border-[rgba(255,255,255,0.3)] rounded-full px-2 py-1"
+          style={{
+            transitionDelay: menuOpen ? `${navLinks.length * 0.08}s` : '0s',
+            opacity: menuOpen ? 1 : 0,
+            transform: menuOpen ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'opacity 0.5s ease, transform 0.5s ease',
+          }}
+        >
+          <button
+            onClick={() => setLanguage('en')}
+            className={`font-nav text-xs px-3 py-1 rounded-full transition-colors ${
+              language === 'en'
+                ? 'bg-[#D4A853] text-[#09090A]'
+                : 'text-white hover:text-[#D4A853]'
+            }`}
+          >
+            EN
+          </button>
+          <button
+            onClick={() => setLanguage('yo')}
+            className={`font-nav text-xs px-3 py-1 rounded-full transition-colors ${
+              language === 'yo'
+                ? 'bg-[#D4A853] text-[#09090A]'
+                : 'text-white hover:text-[#D4A853]'
+            }`}
+          >
+            YO
+          </button>
+        </div>
       </div>
     </>
   )

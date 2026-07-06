@@ -10,6 +10,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Academy from './pages/Academy'
 import Contact from './pages/Contact'
+import Studio from './pages/Studio'
 
 function AppContent() {
   useScrollToTop()
@@ -24,6 +25,7 @@ function AppContent() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/academy" element={<Academy />} />
+            <Route path="/studio" element={<Studio />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </ScrollRevealProvider>

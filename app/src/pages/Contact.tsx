@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { UIIcon } from '../components/Icons'
 import PageHero from '../components/PageHero'
 import { submitToEmail } from '../lib/submitForm'
+import { useLanguage } from '../contexts/LanguageContext'
 
 function triggerConfetti(container: HTMLElement) {
   for (let i = 0; i < 8; i++) {
@@ -16,16 +17,20 @@ function triggerConfetti(container: HTMLElement) {
   }
 }
 
-const contactCards = [
-  { Icon: UIIcon.Phone, label: 'PHONE', primary: '+4915211908325', secondary: 'Call or WhatsApp', tertiary: ' +4915140930539' },
-  { Icon: UIIcon.Email, label: 'EMAIL', primary: 'monsuruobadinafala@gmail.com', secondary: 'General inquiries & academy' },
-  { Icon: UIIcon.MapPin, label: 'VISIT US', primary: 'C/o Tawakalitu Stephen Rudorffstr.42 Munchen Germany', secondary: '' },
-  { Icon: UIIcon.Clock, label: 'YOUTUBE', primary: 'MONUMENTAL TV', secondary: 'Fala Films Multimedia Channel' },
-]
+const getIcon = (icon: string) => {
+  switch (icon) {
+    case 'phone': return <UIIcon.Phone />
+    case 'email': return <UIIcon.Email />
+    case 'map': return <UIIcon.MapPin />
+    case 'clock': return <UIIcon.Clock />
+    default: return <UIIcon.Phone />
+  }
+}
 
 export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const successRef = useRef<HTMLDivElement>(null)
+  const { t } = useLanguage()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -45,28 +50,28 @@ export default function Contact() {
   return (
     <div>
       <PageHero
-        label="CONTACT US"
-        title="Let's Connect"
-        subtitle="Have a film project in mind or questions about the Jaiyeola Acting Academy? We would love to hear from you."
+        label={t.contact.pageHero.label}
+        title={t.contact.pageHero.title}
+        subtitle={t.contact.pageHero.subtitle}
         backgroundImage="./assets/monsuru-on-set.png"
       />
 
       <section className="section-padding bg-[#09090A]">
         <div className="content-max">
           <div className="reveal">
-            <p className="section-label">GET IN TOUCH</p>
+            <p className="section-label">{t.contact.getInTouch.sectionLabel}</p>
             <p className="font-body text-[#C8C8C8] max-w-[600px] mt-4 mb-8">
-              Jaiyeola Movie Entertainment Productions in conjunction with Fala Films Multimedia — creating unforgettable moments on screen and behind the camera.
+              {t.contact.getInTouch.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-            {contactCards.map((card, i) => (
+            {t.contact.getInTouch.cards.map((card, i) => (
               <div key={card.label} className={`glass-card text-center reveal reveal-delay-${Math.min(i, 5)}`}>
-                <div className="flex justify-center mb-4"><card.Icon /></div>
+                <div className="flex justify-center mb-4">{getIcon(card.icon)}</div>
                 <p className="font-micro text-[#D4A853] mb-2">{card.label}</p>
                 <p className="font-body text-white mb-1">{card.primary}</p>
-                 <p className="font-body text-white mb-1">{card.tertiary}</p>
+                {card.tertiary && <p className="font-body text-white mb-1">{card.tertiary}</p>}
                 <p className="font-small text-[#C8C8C8]">{card.secondary}</p>
               </div>
             ))}
@@ -77,9 +82,9 @@ export default function Contact() {
       <section className="bg-[#FAFAF9]" style={{ padding: 'clamp(80px, 12vh, 140px) 0' }}>
         <div className="max-w-[700px] mx-auto px-6">
           <div className="reveal text-center">
-            <h2 className="font-h1 text-[#09090A] mb-4">Send Us a Message</h2>
+            <h2 className="font-h1 text-[#09090A] mb-4">{t.contact.form.title}</h2>
             <p className="font-body text-[rgba(9,9,10,0.7)] mb-12">
-              Fill out the form below and our team will respond as soon as possible.
+              {t.contact.form.description}
             </p>
           </div>
 
@@ -87,7 +92,7 @@ export default function Contact() {
             <div ref={successRef} className="relative">
               <div className="form-success">
                 <div className="success-icon">&#10003;</div>
-                <p>Thank you for reaching out! We will get back to you soon.</p>
+                <p>{t.contact.form.successMessage}</p>
               </div>
             </div>
           ) : (
@@ -128,11 +133,13 @@ export default function Contact() {
               </div>
               <div className="text-center">
                 <button type="submit" disabled={formState === 'submitting'} className="btn-primary" style={{ background: '#D4A853', color: '#09090A' }}>
-                  {formState === 'submitting' ? 'Sending...' : 'Send Message'}
+                  {formState === 'submitting' ? t.contact.form.submittingText : t.contact.form.submitText}
                 </button>
               </div>
               {formState === 'error' && (
-                <p className="form-error">Something went wrong. Please try again or email monsuruobadinafala@gmail.com directly.</p>
+                <p className="form-error">
+                  {t.contact.form.errorMessage}
+                </p>
               )}
             </form>
           )}
