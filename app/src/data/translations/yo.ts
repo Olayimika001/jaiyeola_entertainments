@@ -36,11 +36,7 @@ export const yo = {
       missionDesc: "Lati ṣe awọn akoonu ti o niyanju ti o gba igbadun ati gbigba igbagbọ, lakoko ti a fun awọn oluṣe alade ti nfẹra pẹlu awọn ọgbọn, itọju, ati ẹrọ ti o nilo lati gbe jade.",
       cta: "Kọ ẹkọ Siwaju Nipa Wa"
     },
-    servicesOverview: {
-      sectionLabel: "KINI A ṢE",
-      title: "Awọn Igbadun Iṣẹ Gbogbo Agbaye",
-      cta: "Wo Gbogbo Awọn Iṣẹ"
-    },
+
     academyPreview: {
       sectionLabel: "ILE-ẹKỌ",
       title: "Di Oluṣe Alade",
@@ -398,6 +394,8 @@ export const yo = {
     ],
     getInTouch: "KAN SI WA",
     youtube: "MONUMENTAL TV lori YouTube",
-    copyright: "© 2026 Iṣẹ Iṣelọpọ Ile-ẹkọ Alade Jaiyeola & Fala Films Multimedia. Gbogbo ẹtọ ti wa."
+    copyright: "© 2026 Iṣẹ Iṣelọpọ Ile-ẹkọ Alade Jaiyeola & Fala Films Multimedia. Gbogbo ẹtọ ti wa.",
+    privacy: "Ilana Iṣowo",
+    terms: "Awọn ofin Iṣowo"
   }
 };

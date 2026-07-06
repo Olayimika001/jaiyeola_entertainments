@@ -36,11 +36,7 @@ export const en = {
       missionDesc: "To produce thought-provoking content that entertains and inspires, while providing aspiring artists with the skills, mentorship, and platform they need to thrive.",
       cta: "Learn More About Us"
     },
-    servicesOverview: {
-      sectionLabel: "WHAT WE DO",
-      title: "World-Class Entertainment Services",
-      cta: "View All Services"
-    },
+
     academyPreview: {
       sectionLabel: "THE ACADEMY",
       title: "Become an Artist",

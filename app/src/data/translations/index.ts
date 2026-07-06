@@ -10,5 +10,4 @@ export const translations: Record<Language, Translations> = {
   yo
 };
 
-export { type Language, type Translations, en, yo };
-
+export { en, yo };
