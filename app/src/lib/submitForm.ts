@@ -4,7 +4,7 @@
  * confirmation link to the recipient email — click it once to activate.
  */
 export const CONTACT_EMAIL =
-  import.meta.env.VITE_CONTACT_EMAIL ?? 'monsuruobadinafala@gmail.com'
+  import.meta.env.VITE_CONTACT_EMAIL ?? 'Info@jaiyeolamovieentertaimentproductions.net'
 
 export async function submitToEmail(formData: FormData): Promise<void> {
   if (!formData.has('_captcha')) {
